@@ -19,7 +19,7 @@ def train_gcn(features, adj_train, args, graph_type):
     model_str = args.model
 
     # Store original adjacency matrix (without diagonal entries) for later
-    adj_orig = adj_train
+    adj_orig = adj_train.copy()
     adj_orig = adj_orig - sp.dia_matrix((adj_orig.diagonal()[np.newaxis, :], [0]), shape=adj_orig.shape)
     adj_orig.eliminate_zeros()
 
